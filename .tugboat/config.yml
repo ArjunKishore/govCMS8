@@ -4,7 +4,7 @@ services:
     image: tugboatqa/mysql:5
 
   app:
-    image: tugboatqa/php:7.2-apache
+    image: tugboatqa/php:7.3-apache
     # Set this as the default service. This does a few things
     #   1. Clones the git repository into the service container
     #   2. Exposes port 80 to the Tugboat HTTP proxy
@@ -24,7 +24,7 @@ services:
       init:
         # Tooling.
         - apt-get update
-        - apt-get install -y libbz2-dev
+        - apt-get install -y libbz2-dev libzip-dev
         - docker-php-ext-install opcache bz2 zip
         - a2enmod headers rewrite
         - wget -O /usr/local/bin/drush https://github.com/drush-ops/drush-launcher/releases/download/0.6.0/drush.phar && chmod +x /usr/local/bin/drush
